@@ -688,7 +688,7 @@ RCT_EXPORT_METHOD(getMaximumWriteValueLengthForWithoutResponse:(NSString *)devic
     
     if (peripheral && peripheral.state == CBPeripheralStateConnected) {
         [self insertCallback:callback intoDictionary:readRSSICallbacks withKey:[peripheral uuidAsString]];
-        NSNumber *max = [NSNumber numberWithInteger:[peripheral maximumWriteValueLengthForType:(CBCharacteristicPropertyWriteWithoutResponse)]];
+        NSNumber *max = [NSNumber numberWithInteger:[peripheral maximumWriteValueLengthForType:(CBCharacteristicWriteWithoutResponse)]];
         callback(@[[NSNull null], max]);
     } else {
         callback(@[@"Peripheral not found or not connected"]);
