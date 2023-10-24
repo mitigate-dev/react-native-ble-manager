@@ -671,7 +671,6 @@ RCT_EXPORT_METHOD(getMaximumWriteValueLengthForWithResponse:(NSString *)deviceUU
     CBPeripheral *peripheral = [self findPeripheralByUUID:deviceUUID];
     
     if (peripheral && peripheral.state == CBPeripheralStateConnected) {
-        [self insertCallback:callback intoDictionary:readRSSICallbacks withKey:[peripheral uuidAsString]];
         NSNumber *max = [NSNumber numberWithInteger:[peripheral maximumWriteValueLengthForType:(CBCharacteristicWriteWithResponse)]];
         callback(@[[NSNull null], max]);
     } else {
@@ -687,7 +686,6 @@ RCT_EXPORT_METHOD(getMaximumWriteValueLengthForWithoutResponse:(NSString *)devic
     CBPeripheral *peripheral = [self findPeripheralByUUID:deviceUUID];
     
     if (peripheral && peripheral.state == CBPeripheralStateConnected) {
-        [self insertCallback:callback intoDictionary:readRSSICallbacks withKey:[peripheral uuidAsString]];
         NSNumber *max = [NSNumber numberWithInteger:[peripheral maximumWriteValueLengthForType:(CBCharacteristicWriteWithoutResponse)]];
         callback(@[[NSNull null], max]);
     } else {
